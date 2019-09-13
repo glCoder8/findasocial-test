@@ -4,22 +4,6 @@ import { useQuery } from 'graphql-hooks'
 import Nav from '../components/nav'
 import Profile from '../components/profile'
 
-const style = {
-  parent: {
-    backgroundColor: 'black',
-  }
-};
-
-export const profilesQuery = `
-  query profiles($keyword: String!) {
-    profiles(orderBy: createdAt_DESC) {
-      id
-      name
-      description
-    }
-  }
-`;
-
 const tempProfiles = [
   {
     name: 'Jurriaan van der Broek',
@@ -35,6 +19,16 @@ const tempProfiles = [
     description: 'Hella narwhal Cosby sweater McSweeney\'s salvia kitsch before they sold out High Life.'
   }
 ];
+
+export const profilesQuery = `
+  query profiles($keyword: String!) {
+    profiles(orderBy: createdAt_DESC) {
+      id
+      name
+      description
+    }
+  }
+`;
 
 async function handleSubmit (event, onSubmission) {
   event.preventDefault();
@@ -57,7 +51,7 @@ const Home = () => {
   const profiles = [...tempProfiles];
 
   return (
-    <div style={style.parent}>
+    <div className="screen-container">
       <Head>
         <title>findasocial</title>
       </Head>
@@ -89,66 +83,69 @@ const Home = () => {
       </div>
 
       <style jsx global>{`
-      body {
-        margin: 0px;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif;
-      }
-    `}</style>
+        body {
+          margin: 0px;
+          font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif;
+        }
+      `}</style>
       <style jsx>{`
-      .container {
-        display: block;
-        width: 100vw;
-        height: 100vh;
-        justify-content: center;
-        color: white;
-        padding-top: 100px;
-      }
-      .title {
-        text-align: center;
-      }
-      .description {
-        text-align: center;
-      }
-      .form-inline {
-        display: flex;
-        justify-content: center;
-      }
-      .form-input-keyword {
-        font-size: 14px;
-        background-color: black;
-        padding: 10px 18px;
-        border-color: #f32855;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        width: 300px;
-        color: white;
-      }
-      .form-input-keyword:focus {
-        outline: none;
-      }
-      .btn-primary {
-        padding: 10px 18px;
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
-        background-color: #f32855;
-        border-color: #f32855;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
-      .hint {
-        text-align: center;
-        font-size: 12px;
-      }
-      .section-profile {
-        display: flex;
-        justify-content: center;
-      }
-      .profile-center {
-        margin-top: 20px;
-      }
-    `}</style>
+        .screen-container {
+          background-color: black;
+        }
+        .container {
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          justify-content: center;
+          color: white;
+          padding-top: 100px;
+        }
+        .title {
+          text-align: center;
+        }
+        .description {
+          text-align: center;
+        }
+        .form-inline {
+          display: flex;
+          justify-content: center;
+        }
+        .form-input-keyword {
+          font-size: 14px;
+          background-color: black;
+          padding: 10px 18px;
+          border-color: #f32855;
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+          width: 300px;
+          color: white;
+        }
+        .form-input-keyword:focus {
+          outline: none;
+        }
+        .btn-primary {
+          padding: 10px 18px;
+          color: white;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 600;
+          background-color: #f32855;
+          border-color: #f32855;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+        }
+        .hint {
+          text-align: center;
+          font-size: 12px;
+        }
+        .section-profile {
+          display: flex;
+          justify-content: center;
+        }
+        .profile-center {
+          margin-top: 20px;
+        }
+      `}</style>
     </div>
   );
 };
